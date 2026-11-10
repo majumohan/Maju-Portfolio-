@@ -47,12 +47,13 @@ function App() {
   const close = () => setMenuOpen(false);
   return <div className="app-shell">
     <div className="ambient ambient-one" /><div className="ambient ambient-two" />
+    {menuOpen && <div className="mobile-overlay" onClick={close} />}
     <header className="topbar">
       <a className="brand" href="#home" onClick={close}><span className="brand-mark"><img src={majuPhoto} alt="Maju Mohan" className="brand-avatar" /></span><span>MAJU MOHAN<span className="brand-sub">FULL STACK DEVELOPER</span></span></a>
       <button className="mobile-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">{menuOpen ? <X /> : <Menu />}</button>
       <nav className={menuOpen ? 'nav-links open' : 'nav-links'}>
         {['About', 'Skills', 'Experience', 'Projects', 'Contact'].map(x => <a key={x} href={'#' + x.toLowerCase()} onClick={close}>{x}</a>)}
-        <a className="nav-cta" href="/resume.pdf" download>Resume <Download size={14} /></a>
+        <a className="nav-cta" href="/resume.pdf" download onClick={close}>Resume <Download size={14} /></a>
       </nav>
     </header>
 
